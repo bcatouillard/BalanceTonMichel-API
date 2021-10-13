@@ -1,0 +1,26 @@
+[
+    {
+        "city": "Lille",
+        "country": "France",
+        "time": "2020-01-12",
+        "gender": "F",
+        "age": 21,
+        "type": "viol"
+    },
+    {
+        "city": "Paris",
+        "country": "France",
+        "time": "2019-09-06",
+        "gender": "M",
+        "age": 14,
+        "type": "aggression"
+    },
+    {
+        "city": "Nice",
+        "country": "France",
+        "time": "2014-12-25",
+        "gender": "F",
+        "age": 29,
+        "type": "harcelement"
+    }
+]
