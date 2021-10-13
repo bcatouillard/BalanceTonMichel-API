@@ -1,0 +1,139 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is our API for BalanceTonMichel",
+    "version": "1.0.0",
+    "title": "Swagger BalanceTonMichel",
+    "license": {
+      "name": "ISC",
+      "url": "https://www.isc.org/licenses/"
+    }
+  },
+  "host": "api.balancetonmichel.xyz",
+  "basePath": "/violences",
+  "tags": [
+    {
+      "name": "Violences",
+      "description": "Endpoints"
+    }
+  ],
+  "schemes": ["https", "http"],
+  "paths": {
+    "/get": {
+      "get": {
+        "tags": ["Violences"],
+        "summary": "Fetch all data from database",
+        "operationId": "getData",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success !"
+          },
+          "400": {
+            "description": "Error !"
+          }
+        }
+      }
+    },
+    "/getBy": {
+      "get": {
+        "tags": ["Violences"],
+        "summary": "Get data with filters",
+        "description": "Multiple tags can be provided in the url query string",
+        "operationId": "getDataByTags",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "country",
+            "in": "query",
+            "description": "Tags to filter by country",
+            "required": true,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "city",
+            "in": "query",
+            "description": "Tags to filter by city",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "gender",
+            "in": "query",
+            "description": "Tags to filter by gender",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "Tags to filter by type",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "startDate",
+            "in": "query",
+            "description": "Tags to filter using a period of time",
+            "required": true,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "description": "Tags to filter using a period of time",
+            "required": true,
+            "type": "string",
+            "format": "date-time"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success !"
+          },
+          "400": {
+            "description": "Error !"
+          }
+        }
+      }
+    },
+    "definitions": {
+      "Violence": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "city": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "time": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "gender": {
+            "type": "string",
+            "enum": ["M", "F", "Other"]
+          },
+          "age": {
+            "type": "integer"
+          },
+          "type": {
+            "type": "string",
+            "enum": ["agression", "viol", "harcelement"]
+          }
+        }
+      }
+    }
+  }
+}

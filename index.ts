@@ -23,21 +23,21 @@ app.use(compression());
 app.use(cors());
 app.use(morgan(':method :url :status - :response-time ms'));
 
-/**
- * Security Block
- */
-app.use(helmet.hidePoweredBy());
-app.use(csp({
-    directives: {
-        defaultSrc: ["'self'"],
-        scriptSrc: ["'self'", "'unsafe-inline'"],
-        imgSrc: ['data:'],
-        sandbox: ['allow-forms', 'allow-scripts'],
-        reportUri: '/report-violation',
-    }
-}));
-app.use(helmet.xssFilter());
 if (process.env.NODE_ENV === "prod") {
+    /**
+     * Security Block
+     */
+    app.use(helmet.hidePoweredBy());
+    app.use(csp({
+        directives: {
+            defaultSrc: ["'self'"],
+            scriptSrc: ["'self'", "'unsafe-inline'"],
+            imgSrc: ['data:'],
+            sandbox: ['allow-forms', 'allow-scripts'],
+            reportUri: '/report-violation',
+        }
+    }));
+    app.use(helmet.xssFilter());
     const sixtyDaysInSeconds = 5184000;
     app.use(express_enforces_ssl());
     app.use(helmet.hsts({maxAge: sixtyDaysInSeconds}));
