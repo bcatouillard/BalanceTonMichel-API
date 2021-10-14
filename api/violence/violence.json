@@ -9,7 +9,7 @@
       "url": "https://www.isc.org/licenses/"
     }
   },
-  "host": "api.balancetonmichel.xyz",
+  "host": "balancetonmichel.herokuapp.com",
   "basePath": "/violences",
   "tags": [
     {
