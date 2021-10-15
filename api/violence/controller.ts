@@ -12,7 +12,7 @@ const ViolenceController = {
         const violence = req.body;
         try {
             const document = await Violence.create(violence);
-            res.status(200).send({success: true, insertedDocument: document});
+            res.header("Access-Control-Allow-Origin", "*").status(200).send({success: true, insertedDocument: document});
         } catch (error) {
             res.status(400).send({ success: false, error });
         }
