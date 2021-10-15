@@ -50,8 +50,6 @@ const UserController = {
                     res.status(400).send({error: "Invalid Password"});
 
                 if(response) {
-                    delete foundUser.password;
-
                     const expireIn = 24*60*60;
                     const token = sign({
                         user: foundUser
@@ -61,7 +59,7 @@ const UserController = {
                         expiresIn: expireIn
                     });
 
-                    res.header('Authorization', 'Bearer ' + token).status(200).send({ success: true, user: foundUser, token: token});
+                    res.header('Authorization', 'Bearer ' + token).status(200).send({ success: true, user: { username: foundUser.username, role: foundUser.role }, token: token});
                 }
             })
             
