@@ -61,7 +61,7 @@ const UserController = {
                         expiresIn: expireIn
                     });
 
-                    res.header('Authorization', 'Bearer ' + token).status(200).send({ success: true, user: foundUser});
+                    res.header('Authorization', 'Bearer ' + token).status(200).send({ success: true, user: foundUser, token: token});
                 }
             })
             
